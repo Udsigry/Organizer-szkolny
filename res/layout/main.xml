@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Widget"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/widget"
+    android:orientation="vertical" >
+ 
+<TextView android:id="@+id/widget_textview"
+    android:text="@string/widget_text"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"   
+    android:layout_gravity="center_horizontal|center"
+    android:layout_marginTop="5px"
+    android:padding="10px"
+    android:textColor="@android:color/white"/>
+</LinearLayout>

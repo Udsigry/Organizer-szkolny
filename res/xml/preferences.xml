@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:enabled="true" android:layout="@layout/activity_ustawienia">
+    <PreferenceCategory 
+		android:title="First Category"
+		android:key="first_category">
+		<CheckBoxPreference 
+			android:key="uczen"
+			android:summary="Włącza / Wyłącza tryb Ucznia. gdy jest wyłączony wtedy jest tryb nauczuciela"
+			android:title="Tryb Ucznia" 
+			android:defaultValue="true"
+		/>
+    <ListPreference 
+			android:key="klasa"
+			android:title="Klasa"
+			android:summary="Wybór klasy do której chodzisz, która będzie pokazywana w planie"
+			android:entries="@array/klasa"
+			android:entryValues="@array/klasaValues"
+			android:dependency="uczen"
+		android:defaultValue="o1"/>	
+		<ListPreference 
+			android:key="nauczyciel"
+			android:title="Nauczyciel"
+			android:summary="Wybór Nauczyciela, który będzie pokazywał/a się w planie"
+			android:defaultValue="n1" 
+			android:entries="@array/nauczyciel"
+			android:entryValues="@array/nauczycielValues"
+		/>	
+		<CheckBoxPreference 
+			android:key="welcome"
+			android:summary="Włącza / Wyłącza Ekran powitalny."
+			android:title="Ekran Powitalny" 
+			android:defaultValue="true"
+		android:enabled="true"/>
+	</PreferenceCategory>
+
+</PreferenceScreen>

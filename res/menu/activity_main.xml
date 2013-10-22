@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/item1"
+          android:title="Aktualizuj Plan Lekcji">
+        
+    </item>
+    <item android:id="@+id/info"
+          android:title="WAŻNE!!! Informacje"></item>
+    <item android:id="@+id/sett"
+          android:title="Ustawienia"></item>
+</menu>
