@@ -1,3 +1,7 @@
+/*
+ * plik wygenerowany przez eclipse lekko zmodyfikowany pod ekran pocz¹tkowy (intro)
+ */
+
 package com.udsigry.zs1;
 
 import com.udsigry.zs1.util.SystemUiHider;
@@ -8,7 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;

@@ -2,7 +2,6 @@ package com.udsigry.zs1;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.app.Activity;
 import android.view.Menu;
 
 public class Ustawienia extends PreferenceActivity {
