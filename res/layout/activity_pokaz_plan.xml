@@ -1,9 +1,13 @@
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:background="@drawable/tlo"
+        android:scrollbars="horizontal|vertical" >
+<LinearLayout 
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/tlo"
     android:orientation="vertical" >
 
     <ImageView
@@ -23,18 +27,41 @@
         android:background="@drawable/powrot"
         android:onClick="wroc" />
 
-    <WebView
-        android:id="@+id/plan"
+    <TextView
+        android:id="@+id/dzien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button1"
-        android:clickable="true"
-        android:fadingEdge="vertical"
-        android:fitsSystemWindows="true"
-        android:longClickable="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbarStyle="outsideOverlay" />
+        android:textColor="#FFFFFF"
+        android:text="TextView" />
+    
+    <TextView
+        android:id="@+id/planview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dzień"
+            android:onClick="popdzien" />
+       <Button
+            android:id="@+id/button2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dzień >"
+            android:onClick="nastdzien" />
+
+    </LinearLayout>
 
 </LinearLayout>
+</ScrollView>
 

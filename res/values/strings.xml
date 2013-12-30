@@ -9,8 +9,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_informacje">Informacje</string>
     <string name="informacje">Aplikacja dla Zespołu szkół nr 1 w Piekarach Śląskich przez Udsigry i Biti95. W celu zaktualizowania Planu lekcji wystarczy w Menu wybrać Aktualizuj i plan zostanie pobrany na nowo.</string>
-    <string name="version">Wersja: Release V1.3Release(Build: 75)</string>
-    <string name="akk">Zs-1,3b75release.apk</string>
+    <string name="version">Wersja: Release V1.4Release(Build: 80)</string>
+    <string name="akk">Zs-1,4b80release.apk</string>
     <string name="title_activity_ustawienia">Ustawienia</string>
     <string name="title_activity_intro">Organizer szkolny</string>
     <string name="dummy_button">Dummy Button</string>

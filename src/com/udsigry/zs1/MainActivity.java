@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Calendar;
 import java.util.Scanner;
 import android.preference.PreferenceManager;
 
@@ -55,9 +56,9 @@ public class MainActivity extends Activity {
 			if (klasa == "-1") {										// czy klasa wybrana
 				AlertDialog alertDialog;								//dialog
 				alertDialog = new AlertDialog.Builder(this).create();
-				alertDialog.setTitle("Brak Ustawieñ");
+				alertDialog.setTitle("Brak UstawieÅ„");
 				alertDialog
-						.setMessage("Nie wprowadzono ustawieñ zostajesz przeniesiony do okna ustawien.");
+						.setMessage("Nie wprowadzono ustawieÅ„ zostajesz przeniesiony do okna ustawieÅ„.");
 				alertDialog.setButton("OK",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
@@ -68,19 +69,19 @@ public class MainActivity extends Activity {
 				alertDialog.show();
 
 			}
-		} /*else {
+		} else {
 			if (isNetworkConnected() == true) {						//nie wiem po co to ale chyba takie tam pomylki
 				UpDate();
 			}
-		}*/
+		}
 		if (sharedPrefs.getBoolean("uczen", false) == false) {					//to samo co @up ale dla nauczycieli
 			String nauczyciel = sharedPrefs.getString("nauczyciel", "-1");
 			if (nauczyciel == "-1") {
 				AlertDialog alertDialog;
 				alertDialog = new AlertDialog.Builder(this).create();
-				alertDialog.setTitle("Brak Ustawieñ");
+				alertDialog.setTitle("Brak UstawieÅ„");
 				alertDialog
-						.setMessage("Nie wprowadzono ustawieñ zostajesz przeniesiony do okna ustawien.");
+						.setMessage("Nie wprowadzono ustawieÅ„ zostajesz przeniesiony do okna ustawieÅ„.");
 				alertDialog.setButton("OK",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
@@ -89,11 +90,11 @@ public class MainActivity extends Activity {
 						});
 				alertDialog.show();
 			}
-		}/* else {
+		} else {
 			if (isNetworkConnected() == true) {      //to samo
 				UpDate();
 			}
-		}*/
+		}
 
 		if (isNetworkConnected() == true) {
 
@@ -105,7 +106,7 @@ public class MainActivity extends Activity {
 
 		} else {															//wczytanie zmian gdy brak polaczenie z siecia internet
 			TextView brak = (TextView) findViewById(R.id.brak);
-			brak.setText("Brak po³¹czenia z internetem");
+			brak.setText("Brak poÅ‚Ä…czenia z internetem");
 			WebView zmian = (WebView) findViewById(R.id.zmiana);
 			// zmian.setBackgroundColor(0);
 			String mmm = Environment.getExternalStorageDirectory()
@@ -117,7 +118,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	private boolean isNetworkConnected() {						//test pol¹czenie z internetem
+	private boolean isNetworkConnected() {						//test polï¿½czenie z internetem
 		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo ni = cm.getActiveNetworkInfo();
 		if (ni == null) {
@@ -166,12 +167,16 @@ public class MainActivity extends Activity {
 	private void startDownload() {									//do aktualizatora procedura wymuszonej aktualizacji planu
 		if (sharedPrefs.getBoolean("uczen", false) == true) {
 			String klasa = sharedPrefs.getString("klasa", "-1");
-			String url = "http://zs-1.pl/plany/plany/" + klasa + ".html";
-			new DownloadFileAsync().execute(url);
+			for (int i = 1; i<6;i++){
+				String url = "http://zs-1.pl/android/pliki/" + klasa + "-" + i + ".txt";
+				new Download().execute(url,klasa + "-" + i + ".txt");
+			}
 		} else {
 			String nauczyciel = sharedPrefs.getString("nauczyciel", "-1");
-			String url = "http://zs-1.pl/plany/plany/" + nauczyciel + ".html";
-			new DownloadFileAsync().execute(url);
+			for (int i = 1; i<6;i++){
+				String url = "http://zs-1.pl/android/pliki/" + nauczyciel + "-" + i + ".txt";
+				new Download().execute(url, nauczyciel + "-" + i + ".txt");
+			}
 		}
 
 	}
@@ -191,7 +196,7 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	class DownloadFileAsync extends AsyncTask<String, String, String> {					//pobieranie asyn tylko dla planu lekcji
+	/*class DownloadFileAsync extends AsyncTask<String, String, String> {					//pobieranie asyn tylko dla planu lekcji
 
 		@SuppressWarnings("deprecation")
 		@Override
@@ -266,7 +271,7 @@ public class MainActivity extends Activity {
 			dismissDialog(DIALOG_DOWNLOAD_PROGRESS);
 
 		}
-	}
+	}*/
 
 	public void planlekcji(View view) {										//otwieranie okna z planem
 		SharedPreferences sharedPrefs = PreferenceManager
@@ -278,10 +283,10 @@ public class MainActivity extends Activity {
 			String message = Environment.getExternalStorageDirectory()
 					+ "/plany/";
 			message = message + klasa;
-			message = message + ".html";
+			message = message + "-1.txt";
 			File file = new File(message);
 			if (file.exists()) {
-				message = "file://" + message;
+				message = klasa;
 				intent.putExtra(EXTRA_MESSAGE, message);
 				startActivity(intent);
 				finish();
@@ -297,10 +302,10 @@ public class MainActivity extends Activity {
 			String message = Environment.getExternalStorageDirectory()
 					+ "/plany/";
 			message = message + nauczyciel;
-			message = message + ".html";
+			message = message + "-1.txt";
 			File file = new File(message);
 			if (file.exists()) {							//T: otwieranie okna z planem F: pobranie planu
-				message = "file://" + message;
+				message = nauczyciel;
 				intent.putExtra(EXTRA_MESSAGE, message);
 				startActivity(intent);
 				finish();
@@ -331,7 +336,7 @@ public class MainActivity extends Activity {
 					alertDialog = new AlertDialog.Builder(this).create();
 					alertDialog.setTitle("Nowa wersja! ");
 					alertDialog
-							.setMessage("Dostêpna jest nowa wersja aplikacji po naciœniêciu zostaniesz automatycznie przeniesiony do instalatora.");
+							.setMessage("Dostï¿½pna jest nowa wersja aplikacji po naciï¿½niï¿½ciu zostaniesz automatycznie przeniesiony do instalatora.");
 					alertDialog.setButton("OK",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
